@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class NumbersWizard : MonoBehaviour
 {
-    int m_guess , m_max , m_min;
-    [SerializeField] int m_maxGuessesAllowed;
+    int m_guess;
+    [SerializeField] int m_max , m_maxGuessesAllowed , m_min;
     [SerializeField] Text m_guessLabel;
 
 	void Start()
@@ -29,7 +29,7 @@ public class NumbersWizard : MonoBehaviour
 
     void NextGuess()
     {
-        m_guess = (m_max + m_min) / 2;
+        m_guess = Random.Range(m_min , m_max + 1);
         m_guessLabel.text = m_guess.ToString();
         m_maxGuessesAllowed--;
 
@@ -41,9 +41,8 @@ public class NumbersWizard : MonoBehaviour
 
     void StartGame()
     {
-        m_guess = 500;
-        m_max = 1000;
-        m_min = 1;
+        m_guess = Random.Range(m_min , m_max + 1);
+        m_guessLabel.text = m_guess.ToString();
         m_max++;
     }
 }
